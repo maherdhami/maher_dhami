@@ -474,6 +474,51 @@
     }));
   }
 
+    /* ------------------------------------------------------------------ */
+  /* Intro Video Modal                                                   */
+  /* ------------------------------------------------------------------ */
+  function initVideoModal() {
+    const modal = $('#video-modal');
+    const player = $('#intro-video-player');
+    const openBtns = $$('[data-open-video]');
+    const closeBtns = $$('[data-close-video]');
+    const root = document.documentElement;
+    if (!modal || !player) return;
+
+    const open = () => {
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+      root.style.overflow = 'hidden';
+      try {
+        const p = player.play();
+        if (p && typeof p.catch === 'function') p.catch(() => {});
+      } catch (_) {}
+    };
+
+    const close = () => {
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      root.style.overflow = '';
+      player.pause();
+    };
+
+    openBtns.forEach((btn) => btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      open();
+    }));
+
+    closeBtns.forEach((btn) => btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      close();
+    }));
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+        close();
+      }
+    });
+  }
+
   /* ------------------------------------------------------------------ */
   document.addEventListener('DOMContentLoaded', () => {
     const y = $('#year'); if (y) y.textContent = new Date().getFullYear();
@@ -488,5 +533,6 @@
     initTimeline();
     initWave();
     initContact();
+    initVideoModal();
   });
 })();

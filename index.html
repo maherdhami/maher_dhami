@@ -113,6 +113,7 @@
     </nav>
     <div class="drawer__foot">
       <a class="btn btn--solid" href="assets/Maher_Dhami_Resume.pdf" target="_blank" rel="noopener"><svg class="icon"><use href="#i-file"/></svg>Resume</a>
+      <button class="btn btn--ghost" type="button" data-open-video><svg class="icon icon--fill"><use href="#i-play"/></svg>Watch intro</button>
       <a class="btn btn--ghost" href="#contact">Contact me</a>
     </div>
   </div>
@@ -131,6 +132,7 @@
           <p class="hero__intro reveal" style="--d:.35s">I build <em>AI-powered software</em>, share what I learn, and host conversations with the founders shaping what&rsquo;s next.</p>
           <div class="hero__actions reveal" style="--d:.45s">
             <a class="btn btn--solid" href="#projects">Explore my work<svg class="icon"><use href="#i-arrow-ur"/></svg></a>
+            <button class="btn btn--ghost" type="button" data-open-video><svg class="icon icon--fill"><use href="#i-play"/></svg>Watch intro (40s)</button>
             <a class="btn btn--ghost" href="#contact">Contact me<svg class="icon"><use href="#i-arrow-ur"/></svg></a>
           </div>
           <div class="hero__socials reveal" style="--d:.55s">
@@ -153,6 +155,11 @@
                 <text><textPath href="#circ">Generative AI · LLMs · RAG · Building · </textPath></text></svg>
               <div class="ring__core"><svg class="icon"><use href="#i-spark"/></svg></div>
             </div>
+            <button class="portrait__play" type="button" aria-label="Watch video introduction" data-open-video>
+              <span class="portrait__play-pulse" aria-hidden="true"></span>
+              <span class="portrait__play-icon"><svg class="icon icon--fill"><use href="#i-play"/></svg></span>
+              <span class="portrait__play-label">Play intro (40s)</span>
+            </button>
             <span class="float-tag float-tag--1" data-parallax="0.06"><i></i>Generative AI</span>
             <span class="float-tag float-tag--2" data-parallax="-0.05"><i></i>RAG &amp; LangChain</span>
             <span class="float-tag float-tag--3" data-parallax="0.04"><i></i>Host · The Young Founder Show</span>
@@ -189,6 +196,10 @@
             <figure class="polaroid">
               <img src="assets/maher-dhami.webp" alt="Maher Dhami" width="900" height="900" loading="lazy" decoding="async" />
               <figcaption>Maher · Mumbai, India</figcaption>
+              <button class="polaroid__play" type="button" data-open-video aria-label="Watch Maher's video introduction">
+                <svg class="icon icon--fill"><use href="#i-play"/></svg>
+                <span>Watch intro</span>
+              </button>
             </figure>
             <span class="sticker">SAKEC &rsquo;28</span>
             <div class="orb"><img src="assets/3d-ai-core.webp" alt="" width="900" height="900" loading="lazy" decoding="async" /></div>
@@ -595,6 +606,29 @@
       </div>
     </div>
   </footer>
+
+  <!-- ===== VIDEO MODAL ===== -->
+  <div class="video-modal" id="video-modal" role="dialog" aria-modal="true" aria-label="Maher Dhami — Introduction Video" aria-hidden="true">
+    <div class="video-modal__backdrop" data-close-video></div>
+    <div class="video-modal__box">
+      <div class="video-modal__head">
+        <div class="video-modal__title">
+          <span class="status__dot"></span>
+          <strong>Maher Dhami</strong>
+          <span class="video-modal__sub">Introduction · 40s</span>
+        </div>
+        <button class="video-modal__close" type="button" aria-label="Close intro video" data-close-video>
+          <svg class="icon"><use href="#i-close"/></svg>
+        </button>
+      </div>
+      <div class="video-modal__player">
+        <video id="intro-video-player" playsinline controls preload="metadata" poster="assets/maher-dhami.webp">
+          <source src="assets/intro-video.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+  </div>
 
   <button class="to-top" id="to-top" aria-label="Back to top">
     <svg class="ring-p" viewBox="0 0 62 62" aria-hidden="true"><circle cx="31" cy="31" r="28"/></svg>
